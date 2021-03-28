@@ -28,10 +28,11 @@
 - NOTE: this Background component can be reused in future projects whenever a background image is called for
 
 ### 3. Building the Navbar component
-- For now, we're going to hold off on the submenu and the sidebar
+- For now, we're going to hold off on the sub-menu and the sidebar
 - On a smaller size screen, we will hide the navbar menu items and show the hamburger icon instead
 
-
+### 4. Building the About and Title components
+- The About component will iterate over a list of service objects array and display them in the About section of home page
 
 
 

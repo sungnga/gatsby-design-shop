@@ -5,6 +5,7 @@ import {
   GiStabbedNote,
   GiBriefcase,
 } from "react-icons/gi"
+
 export default [
   {
     id: 1,
