@@ -27,6 +27,17 @@
   - This BgImage component renders children props. This way we can have other contents such as text, overlay filter, etc. on top of the background image
 - NOTE: this Background component can be reused in future projects whenever a background image is called for
 
+### 3. Building the Navbar component
+- For now, we're going to hold off on the submenu and the sidebar
+- On a smaller size screen, we will hide the navbar menu items and show the hamburger icon instead
+
+
+
+
+
+
+
+
 
 
 
