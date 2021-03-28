@@ -19,8 +19,9 @@
 - Copy everything in the gatsby-browser.js file and paste it into the gatsby-ssr.js file. This will make the global styles available for server-side rendering as well
 
 ### 2. Adding a background image in the Hero section
-- Import and configure both the `gatsby-background-image` and `gbimage-bridge` plugins in gatsby-config.js file
+- Install and configure both the `gatsby-background-image` and `gbimage-bridge` plugins in gatsby-config.js file
   - Make sure to install and configure the `gatsby-transformer-sharp` and `gatsby-plugin-sharp plugins` as well
+- Install and configure the `gatsby-source-filesystem` plugin if querying for files on the local filesystem
 - Set up a graphql to query the background image. Do this inside of the Background component
 - Render the image using the BgImage component from gbimage-bridge
   - Add the preserveStackingContext props to preserve the stacking order
@@ -33,8 +34,20 @@
 
 ### 4. Building the About and Title components
 - The About component will iterate over a list of service objects array and display them in the About section of home page
+- The Title component accepts a title as an argument and displays a title for the section
 
+### 5. Airtable CMS setup
+- Sign up for an airtable account
+- Create a workspace and create a base (table) called 'store' for our project
+- Inside the 'store' base, create the fields and define its types
+- Enter in the data for this base
+- In order to fetch the data from airtable with Gatsby plugin, we need the API_KEY and the BASE_ID
+  - Generate an api key in the account settings
+  - The base ID can be found under the 'Help' menu and click on 'API Documentation'
 
+### Connecting Airtable to Gatsby
+- Install and configure the `gatsby-source-airtable` plugin
+  - In the config setup, provide the apiKey and baseId for the tables. Use env variables for this. Also provide tableName
 
 
 
