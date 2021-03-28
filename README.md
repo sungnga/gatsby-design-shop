@@ -38,23 +38,32 @@
 
 ### 5. Airtable CMS setup
 - Sign up for an airtable account
-- Create a workspace and create a base (table) called 'store' for our project
-- Inside the 'store' base, create the fields and define its types
-- Enter in the data for this base
+- Create a workspace and create a base (project name) called 'store' for our project
+- Inside the 'store' base, create a Projects table. Create the fields and define its types
+- Enter in the data for the Projects table
 - In order to fetch the data from airtable with Gatsby plugin, we need the API_KEY and the BASE_ID
   - Generate an api key in the account settings
   - The base ID can be found under the 'Help' menu and click on 'API Documentation'
 
-### Connecting Airtable to Gatsby
+### 6. Connecting Airtable to Gatsby
 - Install and configure the `gatsby-source-airtable` plugin
-  - In the config setup, provide the apiKey and baseId for the tables. Use env variables for this. Also provide tableName
+  - In the config setup, provide the apiKey and baseId for the tables. Use env variables for this. Also provide the tableName
 
-### Building the Projects component, querying projects for home page
+### 7. Building the Projects component, querying projects for home page
 - Set up a graphql to query the latest three projects from airtable
 - Use pageQuery to make the query inside of the HomePage component
 - Then pass down the projects array as projects props to the Projects child component. Also pass down the title props
 - Display the three projects in the Latest Projects section of the home page
 - At the bottom of the Latest Projects section, add an All Projects link that redirects to the projects page
+
+### 8. Adding Customers table, querying customers in Slider component
+- In Airtable 'store' base, add a Customers table. Create the fields and define its types
+- Enter in the data for the Customers table
+- In the gatsby-config.js file, add another table object to the `tables` array for the Customers table
+- Set up a graphql in the Slider component to query the customers data
+- Render the Slider and Title components in the HomePage component
+
+
 
 
 

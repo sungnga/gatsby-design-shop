@@ -2,11 +2,41 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Title from "./Title"
 import styled from "styled-components"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { FaQuoteRight } from "react-icons/fa"
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi"
 
+const query = graphql`
+  {
+    allAirtable(filter: { table: { eq: "Customers" } }) {
+      nodes {
+        data {
+          name
+          quote
+          title
+          image {
+            localFiles {
+              childImageSharp {
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  placeholder: BLURRED
+                  height: 150
+                  width: 150
+                )
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 const Slider = () => {
+  const data = useStaticQuery(query)
+  const customers = data.allAirtable.nodes
+  console.log(customers)
+
   return <h2>slider component</h2>
 }
 
