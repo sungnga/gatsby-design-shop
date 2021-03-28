@@ -1,3 +1,32 @@
+# Notes and steps to building this project
+
+### TECHNOLOGY STACK:
+- Gatsby.js, Airtable CMS, Algolia
+
+### FEATURES:
+- Context API, slider, basic filtering, submenu, styled components
+
+### To start up Gatsby dev server:
+- In the terminal, run: `gatsby develop`
+
+--------------------------------------
+
+### 1. Setting up the root wrapper for global styles
+- Use createGlobalStyle from styled-components plugin to create global styles for the project
+  - Export a wrapRootElement function that returns the GlobalStyle component and the element value that it receives
+- In the gatsby-browser.js file, make the global styles available anywhere by importing the wrapRootElement function from root-wrapper.js file 
+- Copy everything in the gatsby-browser.js file and paste it into the gatsby-ssr.js file. This will make the global styles available for server-side rendering as well
+
+
+
+
+
+
+
+
+
+--------------------------------------
+
 ## Setup
 
 - folders/files/imports
