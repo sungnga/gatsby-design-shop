@@ -1,10 +1,34 @@
 import React from "react"
-import BackgroundImage from "gatsby-background-image"
 import styled, { keyframes } from "styled-components"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import { getImage } from "gatsby-plugin-image"
+import { BgImage } from "gbimage-bridge"
 
-const Background = () => {
-  return <h2>background image component</h2>
+const query = graphql`
+  {
+    placeholderImage: file(relativePath: { eq: "mainBcg.png" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+      }
+    }
+  }
+`
+
+const Background = ({ children }) => {
+  const { placeholderImage } = useStaticQuery(query)
+  const pluginImage = getImage(placeholderImage)
+
+  return (
+    <Wrapper>
+      <BgImage
+        image={pluginImage}
+        className="bcg"
+        preserveStackingContext={true}
+      >
+        {children}
+      </BgImage>
+    </Wrapper>
+  )
 }
 
 const fadeIn = keyframes`
@@ -21,6 +45,7 @@ const Wrapper = styled.section`
     /* MUST!!!!!! */
     min-height: 100vh;
     margin-top: -5rem;
+    background: rgba(0, 0, 0, 0.5);
     display: grid;
     place-items: center;
     animation: ${fadeIn} 2s ease-in-out 1 forwards;

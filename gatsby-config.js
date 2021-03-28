@@ -23,6 +23,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
+    `gatsby-background-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
