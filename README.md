@@ -49,7 +49,12 @@
 - Install and configure the `gatsby-source-airtable` plugin
   - In the config setup, provide the apiKey and baseId for the tables. Use env variables for this. Also provide tableName
 
-
+### Building the Projects component, querying projects for home page
+- Set up a graphql to query the latest three projects from airtable
+- Use pageQuery to make the query inside of the HomePage component
+- Then pass down the projects array as projects props to the Projects child component. Also pass down the title props
+- Display the three projects in the Latest Projects section of the home page
+- At the bottom of the Latest Projects section, add an All Projects link that redirects to the projects page
 
 
 
