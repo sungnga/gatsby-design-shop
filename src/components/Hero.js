@@ -3,16 +3,39 @@ import Background from "./Background"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi"
+import { getImage } from "gatsby-plugin-image"
 
-const Hero = () => {
+const Hero = ({ projects }) => {
+  const [index, setIndex] = React.useState(0)
+  // Iterate over the projects array and
+  // get the image from each project
+  const images = projects.map(item => getImage(item.data.image.localFiles[0]))
+
+  React.useEffect(() => {
+    let lastIndex = images.length - 1
+
+    if (index < 0) {
+      setIndex(lastIndex)
+    }
+    if (index > lastIndex) {
+      setIndex(0)
+    }
+  }, [index, images])
+
   return (
     <Wrapper>
-      <Background>
+      <Background image={images[index]}>
         <article>
           <h3>If you can dream it, we can create it</h3>
           <h1>let your home be unique and stylish</h1>
           <Link to="/projects">Projects</Link>
         </article>
+        <button onClick={() => setIndex(index - 1)} className="prev-btn">
+          <FiChevronLeft />
+        </button>
+        <button onClick={() => setIndex(index + 1)} className="next-btn">
+          <FiChevronRight />
+        </button>
       </Background>
     </Wrapper>
   )

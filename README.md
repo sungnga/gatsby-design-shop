@@ -68,6 +68,13 @@
 - Add Prev and Next buttons to see the previous or next customer's review
 - Only the customer whose index is equal to the index in state will be displayed 
 
+### 10. Building the background image slider in Hero component
+- In the index.js home page, we queried for the projects data. Pass down the projects array as projects props to the Hero child component
+- In the Hero component, receive the projects props
+  - Iterate over the projects array, and only get back an array of images from it
+  - Pass down an image props to the Background child component. The image is from the images array at a particular index. The Background component will render this image, if it exists. Else, it will render its default background image
+  - Add the Prev and Next buttons to see the next or previous project image
+  - Also write conditionals to handle cases where the slider reaches pass the last index of the images array and pass the first index of the array
 
 
 

@@ -14,14 +14,14 @@ const query = graphql`
   }
 `
 
-const Background = ({ children }) => {
+const Background = ({ children, image }) => {
   const { placeholderImage } = useStaticQuery(query)
   const pluginImage = getImage(placeholderImage)
 
   return (
     <Wrapper>
       <BgImage
-        image={pluginImage}
+        image={image || pluginImage}
         className="bcg"
         preserveStackingContext={true}
       >
