@@ -63,8 +63,10 @@
 - Set up a graphql in the Slider component to query the customers data
 - Render the Slider and Title components in the HomePage component
 
-
-
+### 9. Building the customers Slider component
+- In Slider component, iterate over the customers array and display one customer in a slider at a time
+- Add Prev and Next buttons to see the previous or next customer's review
+- Only the customer whose index is equal to the index in state will be displayed 
 
 
 

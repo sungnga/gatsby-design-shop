@@ -35,9 +35,62 @@ const query = graphql`
 const Slider = () => {
   const data = useStaticQuery(query)
   const customers = data.allAirtable.nodes
-  console.log(customers)
+  const [index, setIndex] = React.useState(0)
 
-  return <h2>slider component</h2>
+  React.useEffect(() => {
+    const lastIndex = customers.length - 1
+
+    if (index < 0) {
+      setIndex(lastIndex)
+    }
+    if (index > lastIndex) {
+      setIndex(0)
+    }
+  }, [index, customers])
+
+  return (
+    <Wrapper className="section">
+      <Title title="reviews" />
+      <div className="section-center">
+        {customers.map((customer, customerIndex) => {
+          const { image, name, title, quote } = customer.data
+          const customerImg = getImage(customer.data.image.localFiles[0])
+
+          let position = "nextSlide"
+
+          if (customerIndex === index) {
+            position = "activeSlide"
+          }
+          if (
+            customerIndex === index - 1 ||
+            (index === 0 && customerIndex === customers.length - 1)
+          ) {
+            position = "lastSlide"
+          }
+
+          return (
+            <article key={customerIndex} className={position}>
+              <GatsbyImage
+                image={customerImg}
+                alt="customer img"
+                className="img"
+              />
+              <h4>{name}</h4>
+              <p className="title">{title}</p>
+              <p className="text">{quote}</p>
+              <FaQuoteRight className="icon" />
+            </article>
+          )
+        })}
+        <button className="prev" onClick={() => setIndex(index - 1)}>
+          <FiChevronLeft />
+        </button>
+        <button className="next" onClick={() => setIndex(index + 1)}>
+          <FiChevronRight />
+        </button>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
