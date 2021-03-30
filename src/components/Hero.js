@@ -36,6 +36,15 @@ const Hero = ({ projects }) => {
         <button onClick={() => setIndex(index + 1)} className="next-btn">
           <FiChevronRight />
         </button>
+        <div className="dots">
+          {images.map((_, btnIndex) => (
+            <span
+              onClick={() => setIndex(btnIndex)}
+              key={btnIndex}
+              className={index === btnIndex ? "active" : undefined}
+            ></span>
+          ))}
+        </div>
       </Background>
     </Wrapper>
   )

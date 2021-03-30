@@ -76,6 +76,11 @@
   - Add the Prev and Next buttons to see the next or previous project image
   - Also write conditionals to handle cases where the slider reaches pass the last index of the images array and pass the first index of the array
 
+### Adding slider dots in Hero component
+- Users can click on the slider dots to navigate and see different projects
+- The index of the dots corresponds to the index of the images array
+
+
 
 
 
