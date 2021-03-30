@@ -1,14 +1,94 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Title from "./Title"
 import styled from "styled-components"
 import base from "./Airtable"
 import { FaVoteYea } from "react-icons/fa"
-import { BasketballBall } from "@styled-icons/fa-solid"
-
-console.log(base)
 
 const Survey = () => {
-  return <h2>survey component</h2>
+  const [items, setItems] = React.useState([])
+  const [loading, setLoading] = React.useState(true)
+
+  async function getRecords() {
+    const records = await base("Survey")
+      .select({})
+      .firstPage()
+      .catch(err => console.error(err))
+    //  console.log(records)
+
+    const newItems = records.map(record => {
+      const { id, fields } = record
+      return { id, fields }
+    })
+    // console.log(newItems)
+
+    setItems(newItems)
+    setLoading(false)
+  }
+
+  async function giveVote(id) {
+    setLoading(true)
+    const tempItems = [...items].map(item => {
+      if (item.id === id) {
+        let { id, fields } = item
+        fields = { ...fields, votes: fields.votes + 1 }
+        return { id, fields }
+      } else {
+        return item
+      }
+    })
+
+    const records = await base("Survey")
+      .update(tempItems)
+      .catch(err => console.error(err))
+
+    const newItems = records.map(record => {
+      const { id, fields } = record
+      return { id, fields }
+    })
+
+    setItems(newItems)
+    setLoading(false)
+  }
+
+  React.useEffect(() => {
+    getRecords()
+  }, [])
+  // console.log(items)
+
+  return (
+    <Wrapper className="section">
+      <Title title="Survey" />
+      <div className="container">
+        <h3>Most important room in the house?</h3>
+        {loading ? (
+          <h3>loading</h3>
+        ) : (
+          <ul>
+            {items.map(item => {
+              const {
+                id,
+                fields: { name, votes },
+              } = item
+              return (
+                <li key={id}>
+                  <div className="key">
+                    {name.toUpperCase().substring(0, 2)}
+                  </div>
+                  <div>
+                    <h4>{name}</h4>
+                    <p>{votes} votes</p>
+                    <button onClick={() => giveVote(id)}>
+                      <FaVoteYea />
+                    </button>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        )}
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -27,12 +107,12 @@ const Wrapper = styled.section`
       display: grid;
       gap: 2rem;
       grid-gap: 2rem;
-      @media (min-width: 992px) {
+      @media (min-width: 768px) {
         & {
           grid-template-columns: 1fr 1fr;
         }
       }
-      @media (min-width: 1200px) {
+      @media (min-width: 992px) {
         & {
           grid-template-columns: 1fr 1fr 1fr;
         }

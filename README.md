@@ -90,6 +90,10 @@
 - Import the base in Survey component
 - Render the Survey component in index.js home page
 
+### Fetching, displaying, and updating Survey data in Survey component
+- Write a getRecords() function to fetch the Survey data from Airtable. Call this function in the useEffect() hook. We want to get the data when the Survey component loads
+- When a user clicks on the Vote button, call the giveVote() function to update the votes value in Airtable based on the Survey id
+
 
 
 
