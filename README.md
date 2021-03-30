@@ -80,6 +80,17 @@
 - Users can click on the slider dots to navigate and see different projects
 - The index of the dots corresponds to the index of the images array
 
+### Creating Survey table in Airtable, setting up Airtable SDK in React
+- Add a Survey table in Airtable and define its field types
+- Install Airtable npm package
+  - `npm i airtable`
+- Create a new base instance and set it up in Airtable component
+  - To access the base from Airtable in React Node, need to provide the airtable apiKey and baseId
+  - Export the base
+- Import the base in Survey component
+- Render the Survey component in index.js home page
+
+
 
 
 
