@@ -170,8 +170,13 @@
   - Call useContext() hook and pass in the GatsbyContext as an argument. Destructure the `isSidebarOpen` state
   - Then in return section, write a conditional that if isSidebarOpen is true, then render the `<Sidebar />`
 
-
-
+### 18. Building nested pages: the payments page
+- To create a nested page structure in Gatsby, first create a page folder inside of the `pages` directory. Then inside this folder, create the nested page
+- For example, to create a payments page that's nested in the products path, the structure will look like this:
+  - /pages/products/payments.js
+- The path to the nested page will look like this:
+  - /products/payments
+- Each time Gatsby creates a page, it passes in the props object to that page as well. We have access to the information about a page inside this props object
 
 
 
