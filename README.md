@@ -94,6 +94,12 @@
 - Write a getRecords() function to fetch the Survey data from Airtable. Call this function in the useEffect() hook. We want to get the data when the Survey component loads
 - When a user clicks on the Vote button, call the giveVote() function to update the votes value in Airtable based on the Survey id
 
+### Implementing search by filter functionality
+- First, in the ProjectsPage, set up a graghql to query all projects data in Airtable
+  - Pass down the projects array as projects props to the Projects child component, along with the page props
+- In the Projects component, pass down the projects data, the setProject and the setBackToAll functions as props to the SearchButtons child component
+- The SearchButtons component rendered in the Projects component allows users to search for projects by filtering the type of room they're looking for
+
 
 
 

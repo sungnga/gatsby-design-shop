@@ -8,10 +8,20 @@ import SearchButtons from "./SearchButtons"
 const Projects = ({ projects: data, title, page }) => {
   const [projects, setProjects] = React.useState(data)
 
+  function setBackToAll() {
+    setProjects(data)
+  }
+
   return (
     <Wrapper className="section">
       <Title title={title || "projects"} />
-      {/* search buttons here */}
+      {page && (
+        <SearchButtons
+          projects={data}
+          setProjects={setProjects}
+          setBackToAll={setBackToAll}
+        />
+      )}
       <div className="section-center">
         {projects.map(item => {
           const { id } = item
@@ -30,9 +40,11 @@ const Projects = ({ projects: data, title, page }) => {
           )
         })}
       </div>
-      <Link to="/projects" className="btn">
-        all projects
-      </Link>
+      {!page && (
+        <Link to="/projects" className="btn">
+          all projects
+        </Link>
+      )}
     </Wrapper>
   )
 }
