@@ -1,7 +1,7 @@
 # Notes and steps to building this project
 
 ### TECHNOLOGY STACK:
-- Gatsby.js, Airtable CMS, Algolia
+- Gatsby.js, Airtable CMS, Algolia search
 
 ### FEATURES:
 - Context API, slider, basic filtering, submenu, styled components
@@ -142,6 +142,17 @@
   - Then in the return section of Search/Algolia component, we're going to render the `<NewHits />` component instead of the default Hits component
   - Lastly, apply custom CSS styling to the NewHits component
 
+### 16. Setting up context API in Gatsby
+- Context API allows any components access to certain information or data in the project. Once the context provider is set up, just use the useContext() hook to access the context data
+- In src/context/context.js file:
+  - Create a GatsbyContext instance by calling React's createContext() function
+  - From the GatsbyContext instance, we get the Provider and Consumer
+  - Create a GatsbyProvider component that renders the `<GatsbyContext.Provider />` component. The GatsbyContext.Provider component can render children components
+  - Export both the GatsbyContext and GatsbyProvider components
+- Next, need to setup the context provider in the wrapRootElement
+- In root-wrapper.js file:
+  - Import the GatsbyProvider component
+  - Wrap the whole application (`element`) inside of the GatsbyProvider component. This allows access to context anywhere in our application
 
 
 
