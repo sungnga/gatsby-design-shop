@@ -154,6 +154,22 @@
   - Import the GatsbyProvider component
   - Wrap the whole application (`element`) inside of the GatsbyProvider component. This allows access to context anywhere in our application
 
+### 17. Building the Navbar sublinks in Sidebar component
+- First lets add the sublinks data to context api because we need to use it in multiple components
+- In context.js file and in GatsbyProvider component:
+  - Import the sublinks array data
+  - Create a piece of state called isSidebarOpen that keeps track of whether the sidebar is open or not. Initialize it to false
+  - Create a piece of state called links and initialize it to the sublinks array
+  - Pass down these two states as objects to the `value` props of the GatsbyContext.Provider component
+- In the Sidebar component:
+  - Import the GatsbyContext
+  - Call useContext() hook and pass in the GatsbyContext as an argument. Destructure the `links` array
+  - In the return section, map over the links array and render each link its icon and label properties. Use the Gatsby's Link component to make them into links
+- In the Layout component:
+  - Import the GatsbyContext
+  - Call useContext() hook and pass in the GatsbyContext as an argument. Destructure the `isSidebarOpen` state
+  - Then in return section, write a conditional that if isSidebarOpen is true, then render the `<Sidebar />`
+
 
 
 
