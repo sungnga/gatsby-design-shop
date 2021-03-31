@@ -76,11 +76,11 @@
   - Add the Prev and Next buttons to see the next or previous project image
   - Also write conditionals to handle cases where the slider reaches pass the last index of the images array and pass the first index of the array
 
-### Adding slider dots in Hero component
+### 11. Adding slider dots in Hero component
 - Users can click on the slider dots to navigate and see different projects
 - The index of the dots corresponds to the index of the images array
 
-### Creating Survey table in Airtable, setting up Airtable SDK in React
+### 12. Creating Survey table in Airtable, setting up Airtable SDK in React
 - Add a Survey table in Airtable and define its field types
 - Install Airtable npm package
   - `npm i airtable`
@@ -90,15 +90,66 @@
 - Import the base in Survey component
 - Render the Survey component in index.js home page
 
-### Fetching, displaying, and updating Survey data in Survey component
+### 13. Fetching, displaying, and updating Survey data in Survey component
 - Write a getRecords() function to fetch the Survey data from Airtable. Call this function in the useEffect() hook. We want to get the data when the Survey component loads
 - When a user clicks on the Vote button, call the giveVote() function to update the votes value in Airtable based on the Survey id
 
-### Implementing search by filter functionality
+### 14. Implementing search by filter functionality
 - First, in the ProjectsPage, set up a graghql to query all projects data in Airtable
   - Pass down the projects array as projects props to the Projects child component, along with the page props
 - In the Projects component, pass down the projects data, the setProject and the setBackToAll functions as props to the SearchButtons child component
 - The SearchButtons component rendered in the Projects component allows users to search for projects by filtering the type of room they're looking for
+
+### 15. Using Algolia for projects search
+- We will be using Algolia, a popular search service for Gatsby, to search for projects in the projects page
+
+**Setup Angolia account:**
+- After signed up for an account, create an index and call it Projects
+- Get the API keys and Algolia credentials in the "API Keys" menu item
+- Add the API keys and credentials to the .env files for both development and production
+
+**Setup Algolia plugin:**
+- Install and configure gatsby-plugin-algolia
+  - Install `npm i gatsby-plugin-algolia`
+  - Configure the plugin in gatsby-config.js file
+  - Important note, set the `queries` property to point to the file where queries take place
+
+**Setup Algolia query:**
+- Setup an airtable query in src/constants/algolia.js file. It's the same query we use with graphql to query projects
+- Map over the project data from airtable and return a project object that has the project data
+- After the query setup is fun, run: `gatsby clean && gatsby build`
+- These project objects will then imported and stored in Algolia's Indices under "Projects"
+
+**Setup basic Angolia front end functionality:**
+- Install React InstantSearch: `npm i algoliasearch react-instantsearch-dom`
+- Render the Algolia component in the ProjectsPage component (in pages/projects.js file)
+- In src/components/Algolia.js file and in Search/Algolia component:
+  - Import the algoliasearch function from algoliasearch
+  - Import the InstantSearch, SearchBox, Hits, and connectHits components from react-instantsearch-dom
+  - Pass in the necessary Algolia credentials to the algoliasearch() function
+  - Then in the return section, render the `<InstantSearch />` component. Specify the indexName, which is Projects
+    - Inside this component, render the SearchBox and Hits components
+
+**Add styling to Algolia SearchBox component:**
+- Algolia SearchBox widget docs: https://www.algolia.com/doc/api-reference/widgets/search-box/react/
+- We add our own CSS custom styling to Algolia's SearchBox widget/component
+
+**Add styling to Algolia Hits result component:**
+- In src/components/Algolia.js file and in Search/Algolia component:
+  - To customize the UI for the Hits component, we need to use the connectHits() function provided by Algolia
+  - The connectHits() function takes `hits` as an argument. In our case, `hits` is an array of project objects that we get back from Algolia query
+  - We're going to create a NewHits higher-order-component and pass in the connectHits() function as an argument. That way we can iterate over the `hits` array and apply styling to each project object
+  - Then in the return section of Search/Algolia component, we're going to render the `<NewHits />` component instead of the default Hits component
+  - Lastly, apply custom CSS styling to the NewHits component
+
+
+
+
+
+
+
+
+
 
 
 
