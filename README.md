@@ -194,8 +194,12 @@
   - For the Close button icon, add an onClick event handler that executes the hideSidebar function. Hide the Sidebar when the Close button is clicked
   - Also close the Sidebar when one of the sublinks in the Sidebar is clicked
   
-
-
+### Building sublinks or nested links in Navbar menu
+- In Navbar component:
+  - For starter, we're going to redo our menu items in the Navbar component. We want to display the names of the parent pages as menu items in the Navbar. We get these parent pages from the `links` data from the GatsbyContext context API
+  - The parent pages as menu items are rendered in the NavLink child component
+- The NavLink component renders the parent menu items in the Navbar and it also renders the sub-menu or sublinks when a user hovers over the parent menu items
+- We can get the sublinks data from GatsbyContext API
 
 
 
