@@ -178,8 +178,22 @@
   - /products/payments
 - Each time Gatsby creates a page, it passes in the props object to that page as well. We have access to the information about a page inside this props object
 
-
-
+### 19. Toggling the Sidebar
+- In context.js file and in GatsbyProvider component:
+  - By default, isSidebarOpen state is set to false
+  - Write a showSidebar function that sets isSidebarOpen state to true
+  - Write a hideSidebar function that sets isSidebarOpen state to false
+  - Pass down these two functions to the `value` props of GatsbyProvider component
+- In the Navbar component: to show the Sidebar
+  - Import the GatsbyContext
+  - Call useContext() hook and pass in the GatsbyContext as an argument. Destructure the showSidebar function and the isSidebarOpen state
+  - For the hamburger menu icon button, add an onClick event handler that executes the showSidebar function when the button is clicked. This will display the Sidebar
+  - The Sidebar component is rendered in the Layout component and it's only rendered if isSidebarOpen state is true
+- In the Sidebar component: to hide the Sidebar
+  - Destructure the hideSidebar function from useContext()
+  - For the Close button icon, add an onClick event handler that executes the hideSidebar function. Hide the Sidebar when the Close button is clicked
+  - Also close the Sidebar when one of the sublinks in the Sidebar is clicked
+  
 
 
 

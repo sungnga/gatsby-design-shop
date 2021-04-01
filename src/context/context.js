@@ -11,8 +11,18 @@ const GatsbyProvider = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false)
   const [links, setLinks] = useState(sublinks)
 
+  function showSidebar() {
+    setSidebarOpen(true)
+  }
+
+  function hideSidebar() {
+    setSidebarOpen(false)
+  }
+
   return (
-    <GatsbyContext.Provider value={{ isSidebarOpen, links }}>
+    <GatsbyContext.Provider
+      value={{ isSidebarOpen, links, showSidebar, hideSidebar }}
+    >
       {children}
     </GatsbyContext.Provider>
   )
