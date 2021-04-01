@@ -194,16 +194,17 @@
   - For the Close button icon, add an onClick event handler that executes the hideSidebar function. Hide the Sidebar when the Close button is clicked
   - Also close the Sidebar when one of the sublinks in the Sidebar is clicked
   
-### Building sublinks or nested links in Navbar menu
+### 20. Building sublinks or nested links in Navbar menu
 - In Navbar component:
   - For starter, we're going to redo our menu items in the Navbar component. We want to display the names of the parent pages as menu items in the Navbar. We get these parent pages from the `links` data from the GatsbyContext context API
   - The parent pages as menu items are rendered in the NavLink child component
 - The NavLink component renders the parent menu items in the Navbar and it also renders the sub-menu or sublinks when a user hovers over the parent menu items
 - We can get the sublinks data from GatsbyContext API
 
-
-
-
+### 21. Building the tile layout in GridProjects component
+- In the Latest Projects section of the home page we're displaying a grid layout of our projects. At screen size of 1200px and larger let's display a tile layout instead
+- In home page index.js file, render the GridProjects component instead of the Projects component and pass down the same props
+- In the GridProjects component, render the projects in tile-layout using CSS display grid
 
 
 --------------------------------------
@@ -215,8 +216,6 @@
 - error page, footer, seo
 
 ## Styled Components
-
-VS-Extension
 
 vscode-styled-components
 
@@ -265,10 +264,6 @@ Both files
 npm install --save gatsby-background-image
 
 ```
-
-## Airtable
-
-[airtable](https://airtable.com/invite/r/h4p0v9Vg)
 
 ## env variables
 
