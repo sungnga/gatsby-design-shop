@@ -5,12 +5,7 @@ import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 import Title from "./Title"
 import algoliasearch from "algoliasearch/lite"
-import {
-  InstantSearch,
-  SearchBox,
-  Hits,
-  connectHits,
-} from "react-instantsearch-dom"
+import { InstantSearch, SearchBox, connectHits } from "react-instantsearch-dom"
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,

@@ -6,7 +6,7 @@ import {
   GiBriefcase,
 } from "react-icons/gi"
 
-export default [
+const services = [
   {
     id: 1,
     icon: <GiCompass className="icon" />,
@@ -36,3 +36,5 @@ export default [
       "Man braid banh mi prism disrupt hella cray mlkshk jean shorts typewriter synth salvia direct trade pabst knausgaard.",
   },
 ]
+
+export default services

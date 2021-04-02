@@ -53,7 +53,7 @@ const Slider = () => {
       <Title title="reviews" />
       <div className="section-center">
         {customers.map((customer, customerIndex) => {
-          const { image, name, title, quote } = customer.data
+          const { name, title, quote } = customer.data
           const customerImg = getImage(customer.data.image.localFiles[0])
 
           let position = "nextSlide"

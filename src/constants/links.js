@@ -1,6 +1,6 @@
 import React from "react"
 import { FaCcStripe, FaCreditCard, FaAlipay } from "react-icons/fa"
-export default [
+const links = [
   {
     page: "products",
     label: "payments",
@@ -56,3 +56,5 @@ export default [
     icon: <FaCcStripe className="icon" />,
   },
 ]
+
+export default links

@@ -4,7 +4,6 @@ import {
   Layout,
   Hero,
   About,
-  Projects,
   Survey,
   Slider,
   GridProjects,

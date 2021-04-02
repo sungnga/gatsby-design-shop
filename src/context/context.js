@@ -9,7 +9,7 @@ const GatsbyContext = React.createContext()
 // This component will be called once
 const GatsbyProvider = ({ children }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false)
-  const [links, setLinks] = useState(sublinks)
+  const [links] = useState(sublinks)
 
   function showSidebar() {
     setSidebarOpen(true)
